@@ -18,7 +18,7 @@ public enum OrderStatus {
 		return code;
 	}
 	
-	public static OrderStatus valueOf(int code) {
+	public static OrderStatus valueOf(int code) { // converte valor numerico para o tipo enumerado
 		for (OrderStatus value : OrderStatus.values()) {
 			if (value.getCode() == code) {
 				return value;
