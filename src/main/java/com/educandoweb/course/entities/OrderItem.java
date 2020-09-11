@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.educandoweb.course.entities.pk.OrderItemPk;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_order_item")
@@ -14,8 +15,8 @@ public class OrderItem implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@EmbeddedId
-	private OrderItemPk id;//Atributo identificador correspondente a chave primaria
-
+	private OrderItemPk id = new OrderItemPk(); //Atributo identificador correspondente a chave primaria. 
+												//Sempre que for criar uma classe auxiliar que é um id composto é necessario instanciar
 	private Integer quantity;
 	private Double price;
 	
@@ -31,7 +32,8 @@ public class OrderItem implements Serializable{
 		this.price = price;
 	}
 	
-	public Order getOrder() {
+	@JsonIgnore  // JsonIgnore aqui pq esse getOrder() estava chamando o pedido associado a este item de pedido, ai o pedido chamava o item de pedido de novo, criando um loop infinito
+	public Order getOrder() { 
 		return id.getOrder();
 	}
 	
@@ -70,7 +72,6 @@ public class OrderItem implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
