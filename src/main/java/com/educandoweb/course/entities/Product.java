@@ -31,7 +31,6 @@ public class Product implements Serializable {
 				
 	@ManyToMany     
 	@JoinTable(name = "tb_productCategory", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-	// tb_productCategory = tabela de associação. // product_id = chave estrangeira tabela produto // category_id = chave estrangeira da tabela categoria
 	private Set<Category> categories = new HashSet<>();
 	
 	@OneToMany(mappedBy = "id.product") 

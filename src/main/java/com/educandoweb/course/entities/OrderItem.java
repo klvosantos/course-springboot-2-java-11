@@ -11,12 +11,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_order_item")
-public class OrderItem implements Serializable{ // No paradigma orientado a objeto, não existe o conceito de chave primaria composta. Esta classe auxiliar representa o par(Product e Order) ela guarda o historico do price, pra saber quando um produto valeu em datas anteriores. o Par que ira identificar o OrderItem. OrderItem não tem uma chave primaria propria no banco.
+public class OrderItem implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@EmbeddedId
-	private OrderItemPk id = new OrderItemPk(); //Atributo identificador correspondente a chave primaria. 
-												//Sempre que for criar uma classe auxiliar(OrderItemPk) que é um id composto é necessario instanciar
+	private OrderItemPk id = new OrderItemPk(); 
+												
 	private Integer quantity;
 	private Double price;
 	

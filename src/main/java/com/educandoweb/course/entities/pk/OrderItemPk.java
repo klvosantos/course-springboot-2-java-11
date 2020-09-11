@@ -10,7 +10,7 @@ import com.educandoweb.course.entities.Order;
 import com.educandoweb.course.entities.Product;
 
 @Embeddable
-public class OrderItemPk implements Serializable{	// classe auxiliar de chave primaria composta
+public class OrderItemPk implements Serializable{	
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne

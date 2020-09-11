@@ -14,9 +14,8 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "tb_user") // adicionado name para evitar conflitos com palavras reservadas do sql
+@Table(name = "tb_user") 
 public class User implements Serializable{
-		
 	private static final long serialVersionUID = 1L;
 	
 	@Id
