@@ -64,6 +64,10 @@ public class OrderItem implements Serializable{
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+	
+	public Double getSubTotal() { // Na plataforma java E, o que vale é o get, entao para o returno aparecer no json o nome da função precisa ter get no inicio. Não(subTotal()). Sim(getSubtotal())
+		return price * quantity;
+	}
 
 	@Override
 	public int hashCode() {
