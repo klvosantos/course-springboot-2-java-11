@@ -16,9 +16,9 @@ public class ResourceExceptionHandler { // Classe responsavel pelo tratamento ma
 
 	@ExceptionHandler(ResourceNotFoundException.class) // intercepta a requisição que deu exceção 
 	public ResponseEntity<StandardError> resourceNotFound(ResourceNotFoundException e, HttpServletRequest request) {
-		String error= "Resource not found";
-		HttpStatus status = HttpStatus.NOT_FOUND;
+		String error= "Resource not found"; // adiciona no body da requisição no campo "error"
+		HttpStatus status = HttpStatus.NOT_FOUND; // adiciona no status nº 404
 		StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(),request.getRequestURI());
-		return ResponseEntity.status(status).body(err);
-	}
+		return ResponseEntity.status(status).body(err); // para retornar uma resposta com codigo personalizado status() que vai aceitar o status que foi definido, no caso a variavel status acima
+	}													//body(err) é o corpo da resposta, sendo o err o objeto de erro
 }

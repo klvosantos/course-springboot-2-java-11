@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.time.Instant;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
-public class StandardError implements Serializable{
+													// camada de resource(trabalha com as requisições)
+public class StandardError implements Serializable{ // classe para tratamento manual das exceções, retorna um obj de erro similar ao objeto retornado pelo spring no body de uma requisição.
 	private static final long serialVersionUID = 1L;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
