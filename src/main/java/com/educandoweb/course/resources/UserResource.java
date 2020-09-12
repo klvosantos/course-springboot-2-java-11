@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,12 +41,12 @@ public class UserResource {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
-		
-		// forma padrão de gerar o endereço location
-		// path() recebe um modelo padrão para a criação da Url
-		// buildAndExpand precisa do id inserido
-		// Altera a msg de resposta para 201 e cria um cabeçalho Location, contendo o endereço e demais informações sobre o novo recurso inserido.
-		// created() recebe o objeto uri contruido seguido do obj inserido no banco de dados
+	}
+	
+	@DeleteMapping(value = "/{id}") 
+	public ResponseEntity<Void> delete(@PathVariable Long id) { // para o Long id ser reconhecido como uma variavel na url
+		service.delete(id);
+		return ResponseEntity.noContent().build(); // noContent() retorna uma resposta vazia, ja com o codigo http de uma resposta sem conteudo(204)
 	}
 }
 
